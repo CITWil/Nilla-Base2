@@ -30,7 +30,7 @@ stages:
   # Put your custom actions below this comment
   - name: networking
     type: apt
-    source: null
+    source:
       packages:
        - tailscale
        - wireguard-tools
