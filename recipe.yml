@@ -28,6 +28,63 @@ stages:
     - apt-get update
 
   # Put your custom actions below this comment
+  - name: networking
+    type: apt
+    source: null
+      packages:
+       - tailscale
+       - wireguard-tools
+       - openvpn3-client
+       - network-manager-openvpn
+  - name: backup
+    type: apt
+    source:
+      packages:
+      - restic
+      - rclone
+      - rclone-browser
+  - name: terminal-tools
+    type: apt
+    source:
+      packages:
+       - fastfetch
+       - wl-clipboard
+       - gpg
+  - name: diagnostics
+    type: apt
+    source:
+      packages:
+        - wireshark
+        - wavemon
+        - linssid
+        - iotop
+        - powertop
+  - name: cosmic-repo
+    type: shell
+    commands:
+        - mkdir -p /etc/apt/keyrings
+        - curl -fsSL https://lcheylus.github.io/cosmic-debian/gpg.key -o
+          /etc/apt/keyrings/cosmic-debian-keyring.asc
+        - echo "deb [arch=amd64
+          signed-by=/etc/apt/keyrings/cosmic-debian-keyring.asc]
+          https://lcheylus.github.io/cosmic-debian/ forky main" >
+          /etc/apt/sources.list.d/cosmic-debian.list
+      - apt-get update
+  - name: cosmic
+    type: apt
+    source:
+      packages:
+        - cosmic-session
+        - cosmic-files
+        - cosmic-term
+        - cosmic-store
+        - gnome-keyring
+  - name: connectivity
+    type: apt
+    source:
+      packages:
+        - nautilus-kdeconnect
+        - nautilus-nextcloud
 
   - name: example-packages # Sample module using the built-in Apt module to install packages
     type: apt
