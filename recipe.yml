@@ -36,6 +36,7 @@ stages:
        - wireguard-tools
        - openvpn3-client
        - network-manager-openvpn
+  
   - name: backup
     type: apt
     source:
@@ -43,6 +44,8 @@ stages:
       - restic
       - rclone
       - rclone-browser
+      - keepassxc-full
+  
   - name: terminal-tools
     type: apt
     source:
@@ -50,15 +53,21 @@ stages:
        - fastfetch
        - wl-clipboard
        - gpg
+       - qalculate
+       - git
+
+
   - name: diagnostics
     type: apt
     source:
       packages:
         - wireshark
         - wavemon
-        - linssid
         - iotop
         - powertop
+        - ipcalc
+        - iperf3
+  
   - name: cosmic-repo
     type: shell
     commands:
@@ -69,7 +78,7 @@ stages:
           signed-by=/etc/apt/keyrings/cosmic-debian-keyring.asc]
           https://lcheylus.github.io/cosmic-debian/ forky main" >
           /etc/apt/sources.list.d/cosmic-debian.list
-      - apt-get update
+        - apt-get update
   - name: cosmic
     type: apt
     source:
@@ -79,6 +88,7 @@ stages:
         - cosmic-term
         - cosmic-store
         - gnome-keyring
+  
   - name: connectivity
     type: apt
     source:
