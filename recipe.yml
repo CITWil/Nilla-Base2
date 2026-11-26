@@ -32,36 +32,36 @@ stages:
   - name: networking
     type: apt
     source:
-      packages:
-       - tailscale
-       - wireguard-tools
-       - openvpn3-client
-       - network-manager-openvpn
+      - packages:
+        - tailscale
+        - wireguard-tools
+        - openvpn3-client
+        - network-manager-openvpn
   
   - name: backup
     type: apt
     source:
-      packages:
-      - restic
-      - rclone
-      - rclone-browser
-      - keepassxc-full
+      - packages:
+        - restic
+        - rclone
+        - rclone-browser
+        - keepassxc-full
   
   - name: terminal-tools
     type: apt
     source:
-      packages:
-       - fastfetch
-       - wl-clipboard
-       - gpg
-       - qalculate
-       - git
+      - packages:
+        - fastfetch
+        - wl-clipboard
+        - gpg
+        - qalculate
+        - git
 
 
   - name: diagnostics
     type: apt
     source:
-      packages:
+      - packages:
         - wireshark
         - wavemon
         - iotop
@@ -83,7 +83,7 @@ stages:
   - name: cosmic
     type: apt
     source:
-      packages:
+      - packages:
         - cosmic-session
         - cosmic-files
         - cosmic-term
@@ -93,7 +93,7 @@ stages:
   - name: connectivity
     type: apt
     source:
-      packages:
+      - packages:
         - nautilus-kdeconnect
         - nautilus-nextcloud
         - kdeconnect
