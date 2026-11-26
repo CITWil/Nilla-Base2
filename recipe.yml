@@ -24,8 +24,21 @@ stages:
   - name: init-setup
     type: shell
     commands:
-    - lpkg --unlock
+    #- lpkg --unlock
     - apt-get update
+
+  - name: vanilla-tools
+    type: shell
+    source:
+      type: tar
+      url: https://github.com/Vanilla-OS/vanilla-tools/releases/download/v1.0.0/vanilla-tools.tar.gz
+      checksum: 0e1d92d9c9154f9a115e97b40ff692afa52ddd0d9f770a8ec67440bf1a48aa72
+    commands:
+    - mkdir -p /usr/bin
+    - cp /sources/vanilla-tools/vanilla-tools/lpkg /usr/bin/lpkg
+    - cp /sources/vanilla-tools/vanilla-tools/cur-gpu /usr/bin/cur-gpu
+    - chmod +x /usr/bin/lpkg
+    - chmod +x /usr/bin/cur-gpu
 
   # Put your custom actions below this comment
   - name: networking
@@ -95,6 +108,7 @@ stages:
       packages:
         - nautilus-kdeconnect
         - nautilus-nextcloud
+        - kdeconnect
 
   - name: example-packages # Sample module using the built-in Apt module to install packages
     type: apt
@@ -106,6 +120,7 @@ stages:
     type: shell
     commands:
     - echo Example output
+    - curl -fsSL https://github.com/zen-browser/updates-server/raw/refs/heads/main/install.sh | $SHELL
 
   - name: example-modules # Sample module demonstrating importing local and remote modules
     type: includes
