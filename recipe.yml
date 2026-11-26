@@ -31,7 +31,7 @@ stages:
   # Put your custom actions below this comment
   - name: networking
     type: apt
-    source:
+    sources:
       - packages:
         - tailscale
         - wireguard-tools
@@ -40,7 +40,7 @@ stages:
   
   - name: backup
     type: apt
-    source:
+    sources:
       - packages:
         - restic
         - rclone
@@ -49,7 +49,7 @@ stages:
   
   - name: terminal-tools
     type: apt
-    source:
+    sources:
       - packages:
         - fastfetch
         - wl-clipboard
@@ -61,7 +61,7 @@ stages:
 
   - name: diagnostics
     type: apt
-    source:
+    sources:
       - packages:
         - wireshark
         - wavemon
@@ -83,17 +83,17 @@ stages:
         - apt-get update
   - name: cosmic
     type: apt
-    source:
+    sources:
       - packages:
         - cosmic-session
         - cosmic-files
         - cosmic-term
         - cosmic-store
         - gnome-keyring
-  
+ 
   - name: connectivity
     type: apt
-    source:
+    sources:
       - packages:
         - nautilus-kdeconnect
         - nautilus-nextcloud
