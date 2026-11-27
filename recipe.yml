@@ -111,6 +111,8 @@ stages:
     sources:
       - type: file
         url: https://api.beeper.com/desktop/download/linux/x64/stable/com.automattic.beeper.desktop
+    commands:
+      - mv /sources/beeper/* /appimages/
   
   - name: install-flatpak-apps
     type: flatpak
