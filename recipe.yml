@@ -109,6 +109,7 @@ stages:
       - it.mijorus.gearlever
       - dev.zed.Zed-Preview
       - org.chromium.Chromium
+      - app.grayjay.Grayjay
       remove: []
 
   - name: example-packages # Sample module using the built-in Apt module to install packages
